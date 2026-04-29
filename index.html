@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minnesota at the 2026 FIRST Championship</title>
+<meta property="og:title" content="Minnesota at the 2026 FIRST Championship">
+<meta property="og:description" content="26 Minnesota teams competing at the 2026 FIRST Championship — REBUILT™ presented by Haas — April 29–May 2 in Houston, TX.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:     #0A1628;
+    --navy-mid: #112240;
+    --navy-card:#152945;
+    --navy-bdr: #1e3a5f;
+    --gold:     #F5C842;
+    --gold-dim: #c49a1a;
+    --white:    #F0F4FF;
+    --muted:    #7a9abf;
+    --teal:     #00C9A7;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--navy); color:var(--white); font-family:'DM Sans',sans-serif; }
+
+  .top-bar { height:6px; background:var(--gold); }
+
+  /* HERO */
+  .hero { position:relative; padding:56px 40px 44px; overflow:hidden; border-bottom:1px solid var(--navy-bdr); }
+  .hero::before { content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(245,200,66,.13) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 90% 50%, rgba(0,201,167,.07) 0%, transparent 60%);
+    pointer-events:none; }
+  .hero-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+  .badge { display:inline-flex; align-items:center; gap:8px;
+    background:rgba(245,200,66,.12); border:1px solid rgba(245,200,66,.3);
+    border-radius:4px; padding:4px 14px; font-size:11px; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,9vw,94px); line-height:.92; letter-spacing:2px; }
+  h1 em { font-style:normal; color:var(--gold); }
+  .hero-sub { font-size:15px; color:var(--muted); font-weight:300; margin-top:16px; max-width:580px; line-height:1.65; }
+  .hero-sub strong { color:var(--white); font-weight:500; }
+  .pills { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+  .pill { display:flex; align-items:center; gap:6px; background:var(--navy-card);
+    border:1px solid var(--navy-bdr); border-radius:6px; padding:7px 14px; font-size:12px; color:var(--muted); }
+  .pill strong { color:var(--white); font-weight:500; }
+  .pill a { color:var(--teal); text-decoration:none; }
+  .pill a:hover { text-decoration:underline; }
+
+  /* STAT BAR */
+  .stat-bar { background:var(--navy-mid); border-bottom:1px solid var(--navy-bdr); padding:0 40px; }
+  .stat-bar-inner { max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; }
+  .stat { padding:18px 28px 18px 0; flex:0 0 auto; }
+  .stat:not(:last-child) { border-right:1px solid var(--navy-bdr); margin-right:28px; }
+  .stat-num { font-family:'Bebas Neue',sans-serif; font-size:40px; color:var(--gold); line-height:1; }
+  .stat-lbl { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:2px; }
+
+  /* MAIN */
+  .main { max-width:1100px; margin:0 auto; padding:36px 40px 48px; }
+  .section-title { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:2px; color:var(--white); margin-bottom:4px; }
+  .section-sub { font-size:13px; color:var(--muted); margin-bottom:26px; }
+
+  /* DIVISION GRID */
+  .div-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(480px,1fr)); gap:18px; }
+
+  .div-block { border-radius:12px; overflow:hidden; border:1px solid transparent; }
+
+  .div-header { padding:14px 18px 13px; position:relative; }
+  .div-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:#fff; }
+  .div-sponsor { font-size:11px; color:rgba(255,255,255,.72); margin-top:2px; }
+  .div-count { position:absolute; top:14px; right:16px;
+    background:rgba(0,0,0,.28); border-radius:20px; padding:3px 11px;
+    font-size:11px; font-weight:600; color:rgba(255,255,255,.88); letter-spacing:.5px; }
+
+  .div-teams { background:var(--navy-card); padding:10px; display:flex; flex-direction:column; gap:7px; }
+
+  .team-row { display:flex; align-items:stretch; background:var(--navy-mid);
+    border-radius:8px; overflow:hidden; text-decoration:none; color:inherit;
+    border:1px solid var(--navy-bdr); transition:transform .15s, box-shadow .15s, border-color .15s; }
+  .team-row:hover { transform:translateY(-2px); box-shadow:0 5px 18px rgba(0,0,0,.45); }
+
+  .team-accent { width:4px; flex-shrink:0; }
+  .team-info { padding:10px 12px; flex:1; min-width:0; }
+  .team-num { font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:1.5px; margin-bottom:3px; }
+  .team-name { font-size:14px; font-weight:600; color:var(--white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .team-city { font-size:12px; color:var(--muted); margin-top:3px; }
+  .team-tags { display:flex; gap:5px; margin-top:5px; }
+  .tag { font-size:9px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    padding:2px 6px; border-radius:3px;
+    background:rgba(245,200,66,.12); border:1px solid rgba(245,200,66,.25); color:var(--gold); }
+  .tag.teal { background:rgba(0,201,167,.12); border-color:rgba(0,201,167,.25); color:var(--teal); }
+  .team-tba { display:flex; align-items:center; padding:0 16px;
+    font-size:11px; font-family:'DM Mono',monospace; color:var(--teal);
+    opacity:.65; transition:opacity .15s; white-space:nowrap; flex-shrink:0; border-left:1px solid var(--navy-bdr); }
+  .team-row:hover .team-tba { opacity:1; }
+
+  footer { text-align:center; padding:24px 40px; font-size:12px; color:var(--muted);
+    border-top:1px solid var(--navy-bdr); margin-top:8px; }
+  footer a { color:var(--teal); text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+
+  @media(max-width:640px) {
+    .hero,.main { padding-left:16px; padding-right:16px; }
+    .stat-bar { padding:0 16px; }
+    .div-grid { grid-template-columns:1fr; }
+    .stat:not(:last-child) { margin-right:18px; padding-right:18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">🏒 Land of 10,000 Lakes</div>
+    <h1>Minnesota<br>at <em>Worlds 2026</em></h1>
+    <p class="hero-sub">
+      <strong>26 teams</strong> from Minnesota are competing at the
+      <strong>2026 FIRST® Championship</strong> — REBUILT™ presented by Haas —
+      April 29 – May 2 in Houston, Texas.
+    </p>
+    <div class="pills">
+      <div class="pill">📅 <strong>April 29 – May 2, 2026</strong></div>
+      <div class="pill">📍 <strong>George R. Brown Convention Center, Houston TX</strong></div>
+      <div class="pill">🤖 <strong>600 Teams · 8 Divisions</strong></div>
+      <div class="pill">🌐 <a href="https://www.firstchampionship.org" target="_blank">firstchampionship.org</a></div>
+    </div>
+  </div>
+</header>
+
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat"><div class="stat-num">26</div><div class="stat-lbl">MN Teams</div></div>
+    <div class="stat"><div class="stat-num">4.3%</div><div class="stat-lbl">of Field</div></div>
+    <div class="stat"><div class="stat-num">600</div><div class="stat-lbl">Total Teams</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Divisions</div></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-title">Teams by Division</div>
+  <div class="section-sub">Click any team to view their 2026 profile on The Blue Alliance ↗</div>
+
+  <div class="div-grid">
+
+    <!-- ARCHIMEDES -->
+    <div class="div-block" style="border-color:#c0392b;">
+      <div class="div-header" style="background:linear-gradient(135deg,#c0392b,#962d22);">
+        <div class="div-name">Archimedes Division</div>
+        <div class="div-sponsor">presented by Rockwell Automation, Inc.</div>
+        <div class="div-count">2 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/2847/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#c0392b;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#e74c3c;">#2847</div>
+            <div class="team-name">The MegaHertz</div>
+            <div class="team-city">📍 Fairmont, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/4728/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#c0392b;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#e74c3c;">#4728</div>
+            <div class="team-name">ROCORI Robotics</div>
+            <div class="team-city">📍 Cold Spring, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CURIE -->
+    <div class="div-block" style="border-color:#2980b9;">
+      <div class="div-header" style="background:linear-gradient(135deg,#2980b9,#1f638f);">
+        <div class="div-name">Curie Division</div>
+        <div class="div-sponsor">presented by The Argosy Foundation</div>
+        <div class="div-count">2 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/6045/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#2980b9;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#3498db;">#6045</div>
+            <div class="team-name">Sabre Robotics</div>
+            <div class="team-city">📍 Sartell, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/7028/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#2980b9;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#3498db;">#7028</div>
+            <div class="team-name">Binary Battalion</div>
+            <div class="team-city">📍 Saint Michael, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- DALY -->
+    <div class="div-block" style="border-color:#27ae60;">
+      <div class="div-header" style="background:linear-gradient(135deg,#27ae60,#1e8449);">
+        <div class="div-name">Daly Division</div>
+        <div class="div-sponsor">presented by BAE Systems, Inc.</div>
+        <div class="div-count">5 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/2472/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#27ae60;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#2ecc71;">#2472</div>
+            <div class="team-name">Centurions</div>
+            <div class="team-city">📍 Circle Pines, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/2530/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#27ae60;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#2ecc71;">#2530</div>
+            <div class="team-name">Inconceivable</div>
+            <div class="team-city">📍 Rochester, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/2883/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#27ae60;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#2ecc71;">#2883</div>
+            <div class="team-name">F.R.E.D</div>
+            <div class="team-city">📍 Warroad, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/3100/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#27ae60;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#2ecc71;">#3100</div>
+            <div class="team-name">The Lightning Turtles</div>
+            <div class="team-city">📍 Mendota Heights, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/4674/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#27ae60;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#2ecc71;">#4674</div>
+            <div class="team-name">RoboJacks</div>
+            <div class="team-city">📍 Bemidji, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- GALILEO -->
+    <div class="div-block" style="border-color:#d4a017;">
+      <div class="div-header" style="background:linear-gradient(135deg,#d4a017,#a67c00);">
+        <div class="div-name">Galileo Division</div>
+        <div class="div-sponsor">presented by Mouser Electronics</div>
+        <div class="div-count">6 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/1816/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#d4a017;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f0b429;">#1816</div>
+            <div class="team-name">"The Green Machine"</div>
+            <div class="team-city">📍 Edina, MN</div>
+            <div class="team-tags"><span class="tag">Hall of Fame</span><span class="tag">Pre-Qualified</span></div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/2491/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#d4a017;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f0b429;">#2491</div>
+            <div class="team-name">NoMythic</div>
+            <div class="team-city">📍 Saint Paul, MN</div>
+            <div class="team-tags"><span class="tag teal">2× Regional Champs</span></div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/3082/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#d4a017;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f0b429;">#3082</div>
+            <div class="team-name">Chicken Bot Pie</div>
+            <div class="team-city">📍 Minnetonka, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/4607/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#d4a017;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f0b429;">#4607</div>
+            <div class="team-name">C.I.S.</div>
+            <div class="team-city">📍 Becker, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/5653/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#d4a017;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f0b429;">#5653</div>
+            <div class="team-name">Iron Mosquitos</div>
+            <div class="team-city">📍 Babbitt, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/5913/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#d4a017;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f0b429;">#5913</div>
+            <div class="team-name">Patriotics</div>
+            <div class="team-city">📍 Pequot Lakes, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- HOPPER -->
+    <div class="div-block" style="border-color:#8e44ad;">
+      <div class="div-header" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">
+        <div class="div-name">Hopper Division</div>
+        <div class="div-sponsor">presented by GE Aerospace</div>
+        <div class="div-count">4 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/2220/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#8e44ad;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#a569bd;">#2220</div>
+            <div class="team-name">Blue Twilight</div>
+            <div class="team-city">📍 Eagan, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/3297/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#8e44ad;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#a569bd;">#3297</div>
+            <div class="team-name">Full Metal Jackets</div>
+            <div class="team-city">📍 Perham, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/4174/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#8e44ad;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#a569bd;">#4174</div>
+            <div class="team-name">Mustang Robotics</div>
+            <div class="team-city">📍 Hector, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/5348/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#8e44ad;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#a569bd;">#5348</div>
+            <div class="team-name">Charger Robotics</div>
+            <div class="team-city">📍 Cokato, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- JOHNSON -->
+    <div class="div-block" style="border-color:#e67e22;">
+      <div class="div-header" style="background:linear-gradient(135deg,#e67e22,#b9601a);">
+        <div class="div-name">Johnson Division</div>
+        <div class="div-sponsor">presented by Gene Haas Foundation</div>
+        <div class="div-count">2 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/3630/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#e67e22;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f39c12;">#3630</div>
+            <div class="team-name">Stampede</div>
+            <div class="team-city">📍 Minneapolis, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/7257/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#e67e22;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#f39c12;">#7257</div>
+            <div class="team-name">Semiconductors</div>
+            <div class="team-city">📍 Sauk Centre, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- MILSTEIN -->
+    <div class="div-block" style="border-color:#16a085;">
+      <div class="div-header" style="background:linear-gradient(135deg,#16a085,#0e7062);">
+        <div class="div-name">Milstein Division</div>
+        <div class="div-sponsor">presented by Qualcomm Incorporated</div>
+        <div class="div-count">3 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/2169/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#16a085;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#1abc9c;">#2169</div>
+            <div class="team-name">KING TeC</div>
+            <div class="team-city">📍 Savage, MN</div>
+            <div class="team-tags"><span class="tag teal">Regional Champs</span></div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/2846/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#16a085;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#1abc9c;">#2846</div>
+            <div class="team-name">FireBears</div>
+            <div class="team-city">📍 Roseville, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/3277/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#16a085;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#1abc9c;">#3277</div>
+            <div class="team-name">ProDigi</div>
+            <div class="team-city">📍 Thief River Falls, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- NEWTON -->
+    <div class="div-block" style="border-color:#4a6fa5;">
+      <div class="div-header" style="background:linear-gradient(135deg,#4a6fa5,#355380);">
+        <div class="div-name">Newton Division</div>
+        <div class="div-sponsor">presented by NASA</div>
+        <div class="div-count">2 MN teams</div>
+      </div>
+      <div class="div-teams">
+        <a class="team-row" href="https://www.thebluealliance.com/team/2052/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#4a6fa5;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#7fa8d8;">#2052</div>
+            <div class="team-name">KnightKrawler</div>
+            <div class="team-city">📍 New Brighton, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+        <a class="team-row" href="https://www.thebluealliance.com/team/3276/2026" target="_blank" rel="noopener">
+          <div class="team-accent" style="background:#4a6fa5;"></div>
+          <div class="team-info">
+            <div class="team-num" style="color:#7fa8d8;">#3276</div>
+            <div class="team-name">TOOLCATS</div>
+            <div class="team-city">📍 New London-Spicer, MN</div>
+          </div>
+          <div class="team-tba">TBA ↗</div>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- end div-grid -->
+</div><!-- end main -->
+
+<footer>
+  Data from <a href="https://frc-events.firstinspires.org/2026/CMPTX" target="_blank">frc-events.firstinspires.org</a> ·
+  Team links via <a href="https://www.thebluealliance.com" target="_blank">The Blue Alliance</a> ·
+  Event code <strong>CMPTX</strong> · Updated April 29, 2026
+</footer>
+
+</body>
+</html>
